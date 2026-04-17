@@ -47,7 +47,7 @@ export const Navbar = () => {
           href="#contact"
           className="text-sm font-semibold text-primary-foreground px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 shadow-soft hover:shadow-glow btn-press transition-all"
         >
-          Book a Demo
+          Contact Us
         </a>
       </nav>
     </header>
