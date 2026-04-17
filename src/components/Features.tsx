@@ -5,16 +5,19 @@ const Card = ({
   className = "",
   children,
   delay = 0,
+  id,
 }: {
   className?: string;
   children: React.ReactNode;
   delay?: number;
+  id?: string;
 }) => (
   <motion.div
+    id={id}
     initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    transition={{ duration: 0.6, delay, ease: "easeOut" }}
     className={`relative rounded-2xl glass p-6 card-hover overflow-hidden ${className}`}
   >
     {children}
