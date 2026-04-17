@@ -21,21 +21,21 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-md bg-background/70 border-b border-border/60"
+          ? "backdrop-blur-sm bg-background/55 border-b border-border/40"
           : "bg-transparent"
       }`}
     >
-      <nav className="container flex items-center justify-between h-16">
+      <nav className="container flex items-center justify-between h-20">
         <Logo />
 
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 {l.label}
               </a>
@@ -45,7 +45,7 @@ export const Navbar = () => {
 
         <a
           href="#contact"
-          className="text-sm font-semibold text-primary-foreground px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 shadow-soft hover:shadow-glow btn-press transition-shadow"
+          className="text-sm font-semibold text-primary-foreground px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 shadow-soft hover:shadow-glow btn-press transition-all"
         >
           Book a Demo
         </a>
