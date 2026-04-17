@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useI18n } from "@/i18n/I18nProvider";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -12,24 +11,18 @@ const fadeUp = {
 };
 
 export const Hero = () => {
-  const { t } = useI18n();
   return (
     <section
       id="top"
       className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4 pt-28 pb-20 overflow-hidden"
     >
-      {/* Blueprint background */}
       <div className="absolute inset-0 blueprint-grid blueprint-mask" aria-hidden />
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, hsl(var(--primary) / 0.10), transparent 70%)",
-        }}
+        style={{ background: "var(--gradient-hero)" }}
         aria-hidden
       />
 
-      {/* Architectural wireframe SVG */}
       <svg
         viewBox="0 0 1200 600"
         className="absolute inset-x-0 bottom-0 w-full h-[55%] opacity-[0.55] pointer-events-none"
@@ -77,15 +70,9 @@ export const Hero = () => {
       </svg>
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          variants={fadeUp}
-          custom={0}
-          initial="hidden"
-          animate="show"
-          className="chip"
-        >
+        <motion.div variants={fadeUp} custom={0} initial="hidden" animate="show" className="chip">
           <span className="h-1.5 w-1.5 rounded-full bg-primary pulse-dot" />
-          <span className="mono uppercase tracking-wider">{t("hero.eyebrow")}</span>
+          <span className="mono uppercase tracking-wider">Neurix · Engineering Group</span>
         </motion.div>
 
         <motion.h1
@@ -106,7 +93,7 @@ export const Hero = () => {
           animate="show"
           className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed"
         >
-          {t("hero.subtitle")}
+          Intelligent applications and advanced platforms designed to learn, adapt, and scale.
         </motion.p>
 
         <motion.div
@@ -120,14 +107,14 @@ export const Hero = () => {
             href="#ecosystem"
             className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-glow transition-shadow btn-press"
           >
-            {t("cta.explore")}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
+            Explore the Ecosystem
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card text-foreground font-medium hover:border-primary/40 hover:bg-accent transition-colors btn-press"
           >
-            {t("cta.sales")}
+            Book a Demo
           </a>
         </motion.div>
       </div>

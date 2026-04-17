@@ -1,27 +1,38 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import logoSrc from "@/assets/neurix-logo.png";
 
 type Node = {
   id: string;
   label: string;
+  short: string;
   desc: string;
-  x: number;
-  y: number;
-  core?: boolean;
 };
 
 const nodes: Node[] = [
-  { id: "hq", label: "Neurix HQ", desc: "Group parent: ops, finance, HR, brand governance.", x: 50, y: 50, core: true },
-  { id: "plus", label: "Neurix Plus", desc: "AI Pulse Platform — high-level intelligence core.", x: 50, y: 12 },
-  { id: "labs", label: "Neurix Labs", desc: "Advanced R&D, big data, user intelligence.", x: 88, y: 30 },
-  { id: "tech", label: "Neurix Technology", desc: "Custom software engineering, DevOps, automation.", x: 88, y: 72 },
-  { id: "ai", label: "Neurix AI", desc: "AI applications, NLP, computer vision models.", x: 12, y: 72 },
-  { id: "club", label: "Neurix Club", desc: "Global community of innovators and partners.", x: 12, y: 30 },
+  { id: "plus", label: "Neurix Plus", short: "Plus", desc: "AI Plus Platform — high-level intelligence core." },
+  { id: "labs", label: "Neurix Labs", short: "Labs", desc: "Advanced R&D, big data, and user intelligence." },
+  { id: "tech", label: "Neurix Technology", short: "Technology", desc: "Custom software engineering, DevOps, automation." },
+  { id: "hq", label: "Neurix HQ", short: "HQ", desc: "Group parent: ops, finance, HR, brand governance." },
+  { id: "ai", label: "Neurix AI", short: "AI", desc: "AI applications, NLP, and computer vision models." },
+  { id: "club", label: "Neurix Club", short: "Club", desc: "Global community of innovators and partners." },
 ];
+
+// Symmetrical hexagonal layout (6 nodes evenly spaced around a center)
+// Angles: -90, -30, 30, 90, 150, 210 (top, top-right, bottom-right, bottom, bottom-left, top-left)
+const angles = [-90, -30, 30, 90, 150, 210];
+const RADIUS = 38; // % from center
+
+const positions = angles.map((deg) => {
+  const rad = (deg * Math.PI) / 180;
+  return {
+    x: 50 + RADIUS * Math.cos(rad),
+    y: 50 + RADIUS * Math.sin(rad),
+  };
+});
 
 export const Ecosystem = () => {
   const [active, setActive] = useState<Node>(nodes[0]);
-  const center = nodes.find((n) => n.core)!;
 
   return (
     <section id="ecosystem" className="py-28 bg-surface border-y border-border">
@@ -34,73 +45,83 @@ export const Ecosystem = () => {
             Six divisions. <span className="text-gradient">One intelligent core.</span>
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            Specialized teams operating autonomously, unified by the Pulse intelligence layer.
+            Specialized teams operating autonomously, unified by a single intelligent core.
           </p>
         </header>
 
-        <div className="mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-8 items-center">
+        <div className="mt-14 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
           {/* Diagram */}
-          <div className="relative aspect-square max-w-[640px] w-full mx-auto card-blueprint p-6 overflow-hidden">
+          <div className="relative aspect-square max-w-[640px] w-full mx-auto card-blueprint p-8 overflow-hidden">
             <div className="absolute inset-0 blueprint-grid-fine opacity-60" />
 
+            {/* Concentric guide rings */}
             <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-                </linearGradient>
+                <radialGradient id="ringFade" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                </radialGradient>
               </defs>
-              {nodes
-                .filter((n) => !n.core)
-                .map((n) => (
+              <circle cx="50" cy="50" r="38" fill="none" stroke="hsl(var(--primary) / 0.18)" strokeWidth="0.18" />
+              <circle cx="50" cy="50" r="26" fill="none" stroke="hsl(var(--primary) / 0.12)" strokeWidth="0.15" strokeDasharray="0.6 0.8" />
+              <circle cx="50" cy="50" r="14" fill="url(#ringFade)" />
+
+              {/* Clean spokes from center to each node */}
+              {positions.map((p, i) => {
+                const isActive = active.id === nodes[i].id;
+                return (
                   <line
-                    key={n.id}
-                    x1={center.x}
-                    y1={center.y}
-                    x2={n.x}
-                    y2={n.y}
-                    stroke="url(#edgeGrad)"
-                    strokeWidth="0.25"
-                    strokeDasharray={active.id === n.id ? "0" : "0.6 0.6"}
+                    key={i}
+                    x1="50"
+                    y1="50"
+                    x2={p.x}
+                    y2={p.y}
+                    stroke={isActive ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.28)"}
+                    strokeWidth={isActive ? "0.35" : "0.2"}
+                    strokeLinecap="round"
                   />
-                ))}
+                );
+              })}
             </svg>
 
-            {nodes.map((n) => {
+            {/* Center: Neurix logo */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="logo-chip rounded-2xl px-5 py-3 shadow-glow ring-4 ring-primary/10">
+                <img src={logoSrc} alt="Neurix" className="h-9 w-auto" />
+              </div>
+            </div>
+
+            {/* Outer nodes */}
+            {nodes.map((n, i) => {
+              const p = positions[i];
               const isActive = active.id === n.id;
               return (
                 <motion.button
                   key={n.id}
                   onMouseEnter={() => setActive(n)}
                   onClick={() => setActive(n)}
-                  initial={{ opacity: 0, scale: 0.6 }}
+                  initial={{ opacity: 0, scale: 0.7 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  animate={{
-                    y: n.core ? 0 : [0, -3, 0],
-                  }}
-                  transition={{
-                    y: { duration: 4 + Math.random() * 2, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                  style={{ left: `${n.x}%`, top: `${n.y}%` }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 group focus:outline-none ${
-                    n.core ? "z-20" : "z-10"
-                  }`}
+                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  style={{ left: `${p.x}%`, top: `${p.y}%` }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-10 focus:outline-none group"
                 >
                   <span
-                    className={`block rounded-full border transition-all duration-300 ${
-                      n.core
-                        ? "h-20 w-20 bg-primary text-primary-foreground border-primary shadow-glow"
-                        : isActive
-                        ? "h-14 w-14 bg-card border-primary shadow-elevated"
-                        : "h-12 w-12 bg-card border-border shadow-soft hover:border-primary/40"
+                    className={`block rounded-full transition-all duration-300 grid place-items-center ${
+                      isActive
+                        ? "h-14 w-14 bg-primary text-primary-foreground shadow-glow"
+                        : "h-12 w-12 bg-card border border-border text-primary shadow-soft group-hover:border-primary/50"
                     }`}
-                  />
+                  >
+                    <span className="mono text-[10px] font-semibold uppercase tracking-wider">
+                      {n.short.slice(0, 3)}
+                    </span>
+                  </span>
                   <span
-                    className={`absolute left-1/2 -translate-x-1/2 mt-2 mono text-[10px] uppercase tracking-wider whitespace-nowrap ${
-                      n.core ? "text-primary-foreground -mt-12 font-semibold" : "text-navy"
+                    className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 mono text-[10px] uppercase tracking-wider whitespace-nowrap transition-colors ${
+                      isActive ? "text-primary font-semibold" : "text-navy/70"
                     }`}
-                    style={n.core ? { top: "50%", transform: "translate(-50%,-50%)" } : { top: "100%" }}
                   >
                     {n.label}
                   </span>
@@ -118,7 +139,7 @@ export const Ecosystem = () => {
             className="card-blueprint p-7"
           >
             <div className="mono text-xs text-muted-foreground uppercase tracking-wider">
-              Division · {active.id.toUpperCase()}
+              Division
             </div>
             <h3 className="mt-3 text-2xl font-semibold text-navy">{active.label}</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">{active.desc}</p>
@@ -133,7 +154,7 @@ export const Ecosystem = () => {
                       : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
                   }`}
                 >
-                  {n.label.replace("Neurix ", "")}
+                  {n.short}
                 </button>
               ))}
             </div>

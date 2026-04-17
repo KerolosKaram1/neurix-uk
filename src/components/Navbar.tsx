@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
-import { useI18n } from "@/i18n/I18nProvider";
-import { Languages } from "lucide-react";
+
+const links = [
+  { label: "Mission", href: "#mission" },
+  { label: "Ecosystem", href: "#ecosystem" },
+  { label: "The Plus Platform", href: "#plus" },
+  { label: "Club", href: "#club" },
+  { label: "Ethics", href: "#ethics" },
+];
 
 export const Navbar = () => {
-  const { t, lang, setLang } = useI18n();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -14,19 +19,11 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { label: t("nav.mission"), href: "#mission" },
-    { label: t("nav.ecosystem"), href: "#ecosystem" },
-    { label: t("nav.pulse"), href: "#pulse" },
-    { label: t("nav.club"), href: "#club" },
-    { label: t("nav.ethics"), href: "#ethics" },
-  ];
-
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/80 border-b border-border"
+          ? "backdrop-blur-xl bg-background/85 border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -46,22 +43,12 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setLang(lang === "en" ? "ar" : "en")}
-            aria-label="Toggle language"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground px-3 py-2 rounded-full border border-border btn-press"
-          >
-            <Languages className="h-3.5 w-3.5" />
-            <span className="mono">{lang === "en" ? "EN / AR" : "AR / EN"}</span>
-          </button>
-          <a
-            href="#contact"
-            className="text-sm font-semibold text-primary-foreground px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 shadow-soft btn-press transition-colors"
-          >
-            {t("cta.demo")}
-          </a>
-        </div>
+        <a
+          href="#contact"
+          className="text-sm font-semibold text-primary-foreground px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 shadow-soft hover:shadow-glow btn-press transition-shadow"
+        >
+          Book a Demo
+        </a>
       </nav>
     </header>
   );

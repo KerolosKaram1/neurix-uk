@@ -24,19 +24,13 @@ export const Footer = () => {
                 thoughtfully designed to address your business challenges, drive growth, and
                 create lasting impact.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8">
                 <a
                   href="mailto:info@neurix.uk"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-glow transition-shadow btn-press"
                 >
                   Book a Demo
-                  <ArrowRight className="h-4 w-4 rtl:rotate-180" />
-                </a>
-                <a
-                  href="tel:01110003500"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card text-foreground font-medium hover:border-primary/40 transition-colors btn-press"
-                >
-                  Call Sales
+                  <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
             </div>
@@ -71,7 +65,7 @@ export const Footer = () => {
 
       <div className="border-t border-border">
         <div className="container py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <Logo />
+          <Logo size="sm" />
           <div className="text-xs text-muted-foreground mono">
             Copyright © 2026 Neurix. All Rights Reserved.
           </div>
