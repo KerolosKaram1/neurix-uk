@@ -13,7 +13,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -22,9 +23,14 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         surface: "hsl(var(--surface))",
+        navy: {
+          DEFAULT: "hsl(var(--navy-deep))",
+          soft: "hsl(var(--navy-soft))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -63,12 +69,13 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       boxShadow: {
-        glow: "0 0 40px -8px hsl(239 84% 67% / 0.45)",
-        "glow-cyan": "0 0 40px -8px hsl(188 91% 43% / 0.45)",
+        soft: "var(--shadow-soft)",
+        elevated: "var(--shadow-elevated)",
+        glow: "var(--shadow-glow)",
       },
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
@@ -77,16 +84,11 @@ export default {
           "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.7s ease-out both",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
       },
     },
   },
