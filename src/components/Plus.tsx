@@ -13,7 +13,7 @@ const layers = [
     items: ["Vertical AI apps", "Customer surfaces", "Growth analytics"],
   },
   {
-    name: "AI Pulse Core — Intelligence Layer",
+    name: "AI Plus Core — Intelligence Layer",
     tag: "L2",
     items: ["NLP", "Computer Vision", "Decision Models", "Trust & Governance"],
     highlight: true,
@@ -25,16 +25,16 @@ const layers = [
   },
 ];
 
-export const Pulse = () => {
+export const Plus = () => {
   return (
-    <section id="pulse" className="py-28">
+    <section id="plus" className="py-28">
       <div className="container">
         <header className="max-w-2xl">
           <div className="chip">
             <span className="mono uppercase tracking-wider">Process · Architecture</span>
           </div>
           <h2 className="mt-5 text-4xl md:text-5xl font-bold text-navy leading-tight">
-            The <span className="text-gradient">Pulse</span> Platform Stack.
+            The <span className="text-gradient">Plus</span> Platform Stack.
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
             From research to deployment, every layer is engineered to scale and govern intelligence in production.
@@ -49,7 +49,7 @@ export const Pulse = () => {
               <h3 className="mt-3 text-lg font-semibold text-navy">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
               {i < pipeline.length - 1 && (
-                <ChevronRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40 rtl:rotate-180" />
+                <ChevronRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/40" />
               )}
             </div>
           ))}
