@@ -27,8 +27,8 @@ export const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <nav className="container flex items-center justify-between h-20">
-        <Logo />
+      <nav className="container flex items-center justify-between h-24">
+        <Logo size="md" />
 
         <ul className="hidden lg:flex items-center gap-10">
           {links.map((l) => (
