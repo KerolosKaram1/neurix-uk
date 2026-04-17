@@ -113,7 +113,7 @@ export const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-border">
         <div className="container py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <Logo size="sm" />
+          <Logo size="md" />
 
           <div className="flex items-center gap-2 order-3 md:order-2">
             {socials.map(({ icon: Icon, label, href }) => (
