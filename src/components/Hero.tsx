@@ -114,7 +114,7 @@ export const Hero = () => {
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-card text-foreground font-medium hover:border-primary/40 hover:bg-accent transition-colors btn-press"
           >
-            Book a Demo
+            Contact Us
           </a>
         </motion.div>
       </div>

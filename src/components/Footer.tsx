@@ -48,7 +48,7 @@ export const Footer = () => {
                 href="mailto:info@neurix.uk"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-glow transition-all btn-press"
               >
-                Book a Demo
+                Contact Us
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
