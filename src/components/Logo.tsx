@@ -1,4 +1,4 @@
-import logoSrc from "@/assets/neurix-logo.png";
+import logoSrc from "@/assets/neurix-logo-light.png";
 
 export const Logo = ({ className = "", size = "md" }: { className?: string; size?: "sm" | "md" | "lg" }) => {
   const h = size === "lg" ? "h-10" : size === "sm" ? "h-7" : "h-8";
