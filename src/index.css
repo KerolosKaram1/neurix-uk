@@ -2,86 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Neurix Design System — Dark by default, glassmorphism, indigo→cyan accents */
+/* Neurix Design System — Light, blueprint, architectural */
 
 @layer base {
   :root {
-    /* Core surfaces */
-    --background: 222 39% 7%;          /* #0B0F19 */
-    --foreground: 210 20% 98%;         /* #F9FAFB */
+    /* Surfaces */
+    --background: 0 0% 100%;              /* white */
+    --foreground: 222 47% 11%;            /* deep navy */
 
-    --surface: 220 26% 12%;            /* #111827 */
-    --surface-foreground: 210 20% 98%;
+    --surface: 210 40% 98%;               /* near-white */
+    --surface-foreground: 222 47% 11%;
 
-    --card: 220 26% 12%;
-    --card-foreground: 210 20% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 220 26% 12%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Brand */
-    --primary: 239 84% 67%;            /* #6366F1 indigo */
-    --primary-foreground: 210 20% 98%;
+    /* Brand — tech blue */
+    --primary: 221 83% 53%;               /* #2563EB */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 60%;          /* #3B82F6 */
 
-    --secondary: 188 91% 43%;          /* #06B6D4 cyan */
-    --secondary-foreground: 222 39% 7%;
+    /* Navy as secondary text/UI */
+    --secondary: 222 47% 11%;             /* deep navy */
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 188 91% 43%;
-    --accent-foreground: 222 39% 7%;
+    --accent: 217 91% 96%;                /* faint blue tint */
+    --accent-foreground: 221 83% 33%;
 
-    --muted: 220 26% 14%;
-    --muted-foreground: 220 9% 65%;    /* #9CA3AF */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 45%;      /* slate-500 */
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 26% 18%;             /* #1F2937 */
-    --input: 220 26% 18%;
-    --ring: 239 84% 67%;
+    --border: 214 32% 91%;                /* slate-200 */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    /* Brand gradients & glows */
-    --gradient-brand: linear-gradient(135deg, hsl(239 84% 67%), hsl(188 91% 43%));
-    --gradient-text: linear-gradient(135deg, hsl(239 84% 75%), hsl(188 91% 55%));
-    --gradient-radial: radial-gradient(circle at center, hsl(239 84% 67% / 0.25), hsl(188 91% 43% / 0.18) 40%, transparent 70%);
+    /* Blueprint tokens */
+    --blueprint-line: 221 83% 53%;        /* tech blue grid */
+    --blueprint-bg: 210 40% 99%;
+    --navy-deep: 222 47% 11%;
+    --navy-soft: 215 28% 25%;
 
-    --shadow-glow: 0 0 40px -8px hsl(239 84% 67% / 0.45);
-    --shadow-glow-cyan: 0 0 40px -8px hsl(188 91% 43% / 0.45);
-    --shadow-card: 0 10px 40px -12px hsl(222 39% 2% / 0.6);
+    /* Gradients & shadows */
+    --gradient-brand: linear-gradient(135deg, hsl(221 83% 53%), hsl(199 89% 48%));
+    --gradient-text: linear-gradient(135deg, hsl(222 47% 11%), hsl(221 83% 53%));
+    --gradient-soft: linear-gradient(180deg, hsl(210 40% 99%), hsl(0 0% 100%));
 
-    /* Sidebar (unchanged shadcn defaults adapted) */
-    --sidebar-background: 220 26% 10%;
-    --sidebar-foreground: 220 9% 75%;
-    --sidebar-primary: 239 84% 67%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 26% 14%;
-    --sidebar-accent-foreground: 210 20% 98%;
-    --sidebar-border: 220 26% 18%;
-    --sidebar-ring: 239 84% 67%;
-  }
+    --shadow-soft: 0 1px 2px hsl(222 47% 11% / 0.04), 0 8px 24px -12px hsl(221 83% 53% / 0.12);
+    --shadow-elevated: 0 4px 12px -4px hsl(222 47% 11% / 0.08), 0 24px 48px -16px hsl(221 83% 53% / 0.18);
+    --shadow-glow: 0 0 0 1px hsl(221 83% 53% / 0.12), 0 16px 40px -12px hsl(221 83% 53% / 0.35);
 
-  .dark {
-    --background: 222 39% 7%;
-    --foreground: 210 20% 98%;
-    --surface: 220 26% 12%;
-    --card: 220 26% 12%;
-    --card-foreground: 210 20% 98%;
-    --popover: 220 26% 12%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 239 84% 67%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 188 91% 43%;
-    --secondary-foreground: 222 39% 7%;
-    --accent: 188 91% 43%;
-    --accent-foreground: 222 39% 7%;
-    --muted: 220 26% 14%;
-    --muted-foreground: 220 9% 65%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 26% 18%;
-    --input: 220 26% 18%;
-    --ring: 239 84% 67%;
+    /* Sidebar (kept neutral) */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 221 83% 53%;
   }
 }
 
@@ -96,49 +81,102 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "ss01", "cv11";
   }
+  html[dir="rtl"] body {
+    font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+  }
   h1, h2, h3, h4 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-foreground;
+    font-feature-settings: "ss01";
   }
   ::selection {
-    background: hsl(var(--primary) / 0.35);
+    background: hsl(var(--primary) / 0.18);
     color: hsl(var(--foreground));
   }
 }
 
 @layer components {
-  .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  /* Blueprint grid backgrounds */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(hsl(var(--blueprint-line) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--blueprint-line) / 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
-  .glass-strong {
-    @apply bg-white/[0.07] backdrop-blur-xl border border-white/10;
+  .blueprint-grid-fine {
+    background-image:
+      linear-gradient(hsl(var(--blueprint-line) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--blueprint-line) / 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
+  .blueprint-mask {
+    mask-image: radial-gradient(ellipse 80% 60% at center, black 40%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at center, black 40%, transparent 95%);
+  }
+
   .text-gradient {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
+
   .bg-brand-gradient {
     background: var(--gradient-brand);
   }
-  .radial-blob {
-    background: var(--gradient-radial);
+
+  .card-blueprint {
+    @apply bg-card border border-border rounded-2xl;
+    box-shadow: var(--shadow-soft);
   }
+  .card-blueprint-hover {
+    @apply transition-all duration-300;
+  }
+  .card-blueprint-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+    border-color: hsl(var(--primary) / 0.35);
+  }
+
   .btn-press {
-    @apply transition-transform duration-150 active:scale-95;
+    @apply transition-transform duration-150 active:scale-[0.97];
   }
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-8px_hsl(239_84%_67%/0.45)];
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border border-border bg-accent text-accent-foreground;
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
   }
 }
 
 @layer utilities {
   .marquee {
-    animation: marquee 28s linear infinite;
+    animation: marquee 32s linear infinite;
+  }
+  .draw-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2.4s ease-out forwards;
+  }
+  .pulse-dot {
+    animation: pulseDot 2.4s ease-in-out infinite;
   }
 }
 
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* RTL adjustments */
+html[dir="rtl"] .marquee {
+  animation-direction: reverse;
 }
