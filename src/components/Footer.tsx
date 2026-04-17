@@ -1,9 +1,15 @@
 import { Logo } from "./Logo";
-import { Phone, Mail, Globe, Clock, ArrowRight, Linkedin, Twitter, Facebook, Youtube } from "lucide-react";
+import { Phone, Mail, Globe, Clock, ArrowRight, Linkedin, Facebook, Youtube } from "lucide-react";
+
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const socials = [
   { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Twitter, label: "X", href: "#" },
+  { icon: XIcon, label: "X", href: "#" },
   { icon: Facebook, label: "Facebook", href: "#" },
   { icon: Youtube, label: "YouTube", href: "#" },
 ];
